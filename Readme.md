@@ -38,7 +38,7 @@
 
 
 
-# Running dokcer container
+# Running docker container
 
 
 ```bash
