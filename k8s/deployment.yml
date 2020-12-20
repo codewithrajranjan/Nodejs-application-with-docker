@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: my-node-container
-        image: updateThis
+        image: <image_name>:<tag>
         ports:
-        - containerPort: 80
+        - containerPort: 9005
         imagePullPolicy: Never
 ---
 kind: Service
@@ -31,7 +31,7 @@ spec:
   ports:
   - name: http
     protocol: TCP
-    port: 8080
-    targetPort: 80
+    port: 9005
+    targetPort: 9005
     nodePort: 30007
   type: NodePort
