@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-app
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app-k8s
+  template:
+    metadata:
+      labels:
+        app: my-app-k8s
+    spec:
+      containers:
+      - name: my-node-container
+        image: updateThis
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app-k8s
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 30007
+  type: NodePort
