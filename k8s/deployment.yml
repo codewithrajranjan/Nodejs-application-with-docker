@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-node-app
+  name: model-node-app
   labels:
     app: node-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app-k8s
+      app: model-app-k8s
   template:
     metadata:
       labels:
-        app: my-app-k8s
+        app: model-app-k8s
     spec:
       containers:
-      - name: my-node-container
+      - name: model-node-container
         image: <image_name>:<tag>
         ports:
         - containerPort: 9005
@@ -24,10 +24,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: my-app-service
+  name: model-app-service
 spec:
   selector:
-    app: my-app-k8s
+    app: model-app-k8s
   ports:
   - name: http
     protocol: TCP
