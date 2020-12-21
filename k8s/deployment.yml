@@ -33,5 +33,5 @@ spec:
     protocol: TCP
     port: 9005
     targetPort: 9005
-    nodePort: 30007
+    nodePort: 30009
   type: NodePort
