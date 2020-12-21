@@ -16,7 +16,7 @@
 ```
 
 
-# Running the application
+# Running the applications
 
 
 ```javascript
