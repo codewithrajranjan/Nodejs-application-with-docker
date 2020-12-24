@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-node-app
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-app-k8s
+  template:
+    metadata:
+      labels:
+        app: model-app-k8s
+    spec:
+      containers:
+      - name: model-node-container
+        image: <image_name>:<tag>
+        ports:
+        - containerPort: 9005
+        imagePullPolicy: Never
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: model-app-service
+spec:
+  selector:
+    app: model-app-k8s
+  ports:
+  - name: http
+    protocol: TCP
+    port: 9005
+    targetPort: 9005
+    nodePort: 30009
+  type: NodePort

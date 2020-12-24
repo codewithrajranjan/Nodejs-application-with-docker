@@ -1,4 +1,4 @@
-# Sample nodejs application with docker Conatiner
+# Sample nodejs application with docker Conatiners
 
 
 # Installation
@@ -16,7 +16,7 @@
 ```
 
 
-# Running the application
+# Running the applications
 
 
 ```javascript
